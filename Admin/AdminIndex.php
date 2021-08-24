@@ -52,4 +52,6 @@
 		</main>
 	</div>
 
-<?php include("../Nav/loggedFooter.php");?>
+<?php include("../Nav/loggedFooter.php");
+//test github?>
+
