@@ -47,7 +47,7 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<div class="container pb-6">
+<div class="container pb-5">
     <main role="main">
     <h2>Admin : Create Student</h2><br>
     <div class="row">
@@ -118,18 +118,13 @@ if (isset($_POST['submit'])) {
                 <button type="submit" name ="submit" class= "btn btn-primary"  style="font-family: arial;" class="form-control ">Create Student</button>
             </div>
         
-        
+                <div class="form-group col-5 pb-4">
+                    <a href="AdminIndex.php">Back</a>   
+                </div> 
         </form>
-        </div>        
-    </div>
-    <div class="row">
-        <div class="col-3">
-            <a href="AdminIndex.php">Back</a>   
-        </div>
-   
-                
-    </div>
-         
+        </div>     
+             
+    </div>   
     </main>
 </div>
 

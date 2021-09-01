@@ -75,8 +75,11 @@
                 <input type="submit" value="Upload Image" name="submit" class="btn btn-primary">
             </form>
         </div>
-            
-    
+       
+    </div>
+    <br>
+    <div>
+            <a href="../Admin/ViewFilterStudent.php">Back</a>
     </div>
     <br>
     <?php echo $message; 
