@@ -129,22 +129,20 @@
                     <div class="form-group col-7">
                         <label class="control-label font-weight-bold">Course : </label>
                         <select type = "text" name="course[]" class="form-control" placeholder="Enter module name" multiple="multiple" size = 4>
-                            <?php 
-                            for ($i=0; $i<count($course_array); $i++):?>
-                            <option value=<?php echo '"'.$course_array[$i]['Course'].'"'?> <?php if(in_array($course_array[$i]['Course'], $modCourse))  echo "selected";?>>
-                            <?php echo $course_array[$i]['Course'];?></option>
-                            <?php endfor; ?>
+                            <option value= "Software Engineering" <?php if(in_array("Software Engineering", $modCourse))  echo "selected";?>>Software Engineering</option>
+                            <option value= "Forensics" <?php if(in_array("Forensics", $modCourse))  echo "selected";?>>Forensics</option>
+                            <option value= "Computer Science" <?php if(in_array("Computer Science", $modCourse))  echo "selected";?>>Computer Science</option>
+                            <option value= "Networking" <?php if(in_array("Networking", $modCourse))  echo "selected";?>>Networking</option>
+                            <option value= "Artificial Intelligence" <?php if(in_array("Artificial Intelligence", $modCourse))  echo "selected";?>>Artificial Intelligence</option>
                         </select>
-                        <span class="text-danger"></span>
                     </div>
 
                     <div class="form-group col-7">
                         <label class="control-label font-weight-bold">Module Year : </label><br>
                             <div style="display: inline-block; margin-left: 5px">
                             <input type="checkbox" id="selectAll" onclick="toggle(this);" class="form-check-inline"/>Select all<br>
-                            <?php
-                                for ($i=0; $i<4; $i++):?>
-                               <input type="checkbox" name="year[]" value="<?php echo ($i+1);?>" class="form-check-inline" <?php if (in_array($i+1, $modYear)) echo 'checked'; ?>/><?php echo $i+1;?><br />
+                               <?php for ($i=0; $i<4; $i++):?>
+                                <input type="checkbox" name="year[]" value="<?php echo ($i+1);?>" class="form-check-inline" <?php if (in_array($i+1, $modYear)) echo 'checked'; ?>/><?php echo $i+1;?><br />
                                <?php endfor; ?>
                             </div>
                            
@@ -157,8 +155,6 @@
                                 <input type="radio" name="status" value="Active" class="form-check-inline" <?php if ($rowResult[0]['ModuleStatus']=="Active") echo "checked";?>>Active
                                 <input type="radio" name="status" value="Close" class="form-check-inline" style="margin-left: 20px" <?php if ($rowResult[0]['ModuleStatus']=="Close") echo "checked";?>>Close
                             </div>
-                           
-                        <span class="text-danger"></span>
                     </div>
 
                     <div class="form-group col-7">

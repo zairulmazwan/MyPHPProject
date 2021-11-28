@@ -90,7 +90,7 @@ $emptyMsg = "";
                         <td><?php echo $arrayModules[$i]['ModuleYear'] ?></td>  
                         <td><?php echo $arrayModules[$i]['ModuleStatus'] ?></td> 
                         <td>
-                            <a href="updateModule.php?moduleCode=<?php echo $arrayModules[$i]['ModuleCode']; ?>">Update</a><a href="#" style="margin: 18px;">Delete</a>
+                            <a href="updateModule2.php?moduleCode=<?php echo $arrayModules[$i]['ModuleCode']; ?>">Update</a><a href="#" style="margin: 18px;">Delete</a>
                         </td>  
                     </tr>
                 <?php endfor; ?></php>

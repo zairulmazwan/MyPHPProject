@@ -26,7 +26,7 @@
         
       <?php //print_r($_POST['selectModule']);
 
-        $moduleCode = $_POST['selectModule'];
+        $moduleCode = $_POST['selectModule']; //from checkbox array from registerModule.php 
         $db = new SQLite3('C:\xampp\Data\StudentModule.db');
         $results = [];
         //print_r($moduleCode);

@@ -27,6 +27,7 @@
 
         $studRes [] = $row;
     }
+
 ?>
 <script>
 
@@ -96,7 +97,7 @@
                             <label  style="font-size: 20px; color: blue; padding-left: 30px;"><?php echo ($studRes[0]['StdEmail']); ?></label>
                     </div>
                 </div>
-
+                <p><a href="../PDF/pdfTable.php?" target="_blank">Generate PDF</a></p>
                 
             </div>
             

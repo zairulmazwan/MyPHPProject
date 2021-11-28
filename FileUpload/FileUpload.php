@@ -1,6 +1,19 @@
 <?php
      include("../Nav/Admin/loggedHeaderAdmin.php");
      include("InsertUploadFile.php");
+     include("../Session/session.php");
+
+     $path = "../Admin/LoginAdmin.php"; //this path is to pass to checkSession function from session.php 
+     
+     session_start(); //must start a session in order to use session in this page.
+     if (!isset($_SESSION['name'])){
+         session_unset();
+         session_destroy();
+         header("Location:".$path);//return to the login page
+     }
+    
+     $user = $_SESSION['name'];
+     checkSession ($path); //calling the function from session.php
 
 
      $message="";
@@ -17,12 +30,13 @@
         $target_dir = "C:/xampp/Data/StudentPictures/"; //to specify the directory 
         $target_file = $target_dir.basename($_FILES["fileToUpload"]["name"]); //fileToUpload - is from the form -input name
         $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        //$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 
        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]); //tmp_name to get the file path 
        if ($check !== false) {
-         $message .="File is an image - " . $check["mime"] . ". ";
+         //$message .="File is an image - " . $check["mime"] . ". ";
+         $message .="File is an image - " . $_FILES["fileToUpload"]["type"]. ". ";
          //echo "File is an image - " . $check["mime"] . ".";
          $uploadOk = 1;
        } else {
@@ -32,32 +46,32 @@
        }
      
 
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        $message .= "Sorry, your file was not uploaded.";
-        //echo "Sorry, your file was not uploaded.";
-    // if everything is ok, try to upload file
-    } else {
-        
-        //changing the file name according to the student ID
-        $extension = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION); //getting the file extension
-        $fileName = $stdId.".".$extension; //joining the new file name with the extension
-        
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dir.$fileName)) {
-            $message .="The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-            //echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            $message .= "Sorry, your file was not uploaded.";
+            //echo "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
         } else {
-            $message .="Sorry, there was an error uploading your file.";
-            //echo "Sorry, there was an error uploading your file.";
-        }
+            
+            //changing the file name according to the student ID
+            $extension = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION); //getting the file extension
+            $fileName = $stdId.".".$extension; //joining the new file name with the extension
+            
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_dir.$fileName)) {
+                $message .="The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+                //echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+            } else {
+                $message .="Sorry, there was an error uploading your file.";
+                //echo "Sorry, there was an error uploading your file.";
+            }
         
     }
    
-    $inserted = insertStudPicture($stdId, $fileName); //calling this function to insert the file name and student id into db
-    echo "<script>alert('$message');</script>"; //to prompt an alert message on the browser
-    if (!$inserted) { //if this is false
-        echo "File was not inserted into database!";
-    }
+        $inserted = insertStudPicture($stdId, $fileName); //calling this function to insert the file name and student id into db
+        echo "<script>alert('$message');</script>"; //to prompt an alert message on the browser
+        if (!$inserted) { //if this is false
+            echo "File was not inserted into database!";
+        }
 }
 
 ?>

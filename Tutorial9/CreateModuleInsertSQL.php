@@ -33,9 +33,9 @@
         $sql = 'INSERT INTO Module(ModuleCode, ModuleName, ModuleLevel, ModuleCourse, ModuleYear, ModuleStatus) VALUES(:MCode, :MName, :Mlevel, :MCourse, :MYear, :MStatus)';
         $stmt = $db->prepare($sql);
 
-        $stmt->bindParam(':MCode', $_POST['moduleCode'], SQLITE3_TEXT);
-        $stmt->bindParam(':MName', $_POST['moduleName'], SQLITE3_TEXT);
-        $stmt->bindParam(':Mlevel', $_POST['level'], SQLITE3_INTEGER); //level in the table is defined as integer, thus we use INTEGER
+        $stmt->bindParam(':MCode', $_POST['mcode'], SQLITE3_TEXT);
+        $stmt->bindParam(':MName', $_POST['mname'], SQLITE3_TEXT);
+        $stmt->bindParam(':Mlevel', $_POST['mlevel'], SQLITE3_INTEGER); //level in the table is defined as integer, thus we use INTEGER
         $stmt->bindParam(':MCourse', $course, SQLITE3_TEXT);
         $stmt->bindParam(':MYear', $year, SQLITE3_TEXT);
         $stmt->bindParam(':MStatus', $_POST['status'], SQLITE3_TEXT);
@@ -48,8 +48,4 @@
             $created=true;
         }
         return $created;
-        
     }
-
-
-?>

@@ -28,7 +28,7 @@ function checkSession ($path) {
 
     //Expire the session if user is inactive for 30
     //minutes or more.
-    $expireAfter = 35;
+    $expireAfter = 40; //this value is in minutes
 
     //Check to see if our "last action" session
     //variable has been set.

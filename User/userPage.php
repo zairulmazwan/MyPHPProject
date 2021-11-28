@@ -1,4 +1,4 @@
- <?php 
+<?php 
  include("../Nav/loggedHeader.php");
  include("../Session/session2.php");
  
@@ -18,19 +18,10 @@
 
 	<div class="container bgColor">
         <main role="main" class="pb-3">
-		<h1>Tutorial Week 9</h2><br>
-		<div><p>Hello <?php echo ucfirst($user); ?></p></div>
+		<h1>Tutorial Week 9 : User Page 2</h2><br>
+		<div><p>Hello <?php echo ucfirst($user)." you again in the session!"; ?></p></div>
 
-			<?php
-				print "This page appears after successful logged in!";
- 			?>
-
-		<div>
-			<a href="userPage.php">Let's go to page 2</a>
-		</div>
 		</main>
 	</div>
 
 <?php include("../Nav/loggedFooter.php");?>
-
-

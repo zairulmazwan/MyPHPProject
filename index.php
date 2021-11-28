@@ -7,10 +7,8 @@
 
  $readFile = fopen($fileName, "r") or die ("Unable to open a file");
  $text = [];
- $stringText="";
  while(!feof($readFile)){
      $text [] = fgets($readFile);
-     //$stringText.= fgets($readFile);
  }
  
 

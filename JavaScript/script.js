@@ -6,7 +6,7 @@ function display_c(){
 
 function display_ct() {
 
-    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
     const days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 
     var x = new Date()
@@ -15,4 +15,13 @@ function display_ct() {
     
     document.getElementById('clock').innerHTML = x1;
     display_c();
+}
+
+function toogle (source){
+    var checkBoxes = document.getElementsById("chx");
+
+    for(var i=0; i<checkBoxes.length; i++) //i+=2;
+    {
+        checkBoxes[i].checked = source.checked;
+    }
 }

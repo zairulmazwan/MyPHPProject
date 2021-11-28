@@ -18,7 +18,7 @@
 
  $welcomeNote = file_get_contents($fileName);
  $readFile = fopen($fileName, "r") or die ("Unable to open a file");
-
+ fclose($readFile);
 
  ?>
 

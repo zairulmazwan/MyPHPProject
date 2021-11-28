@@ -3,11 +3,6 @@ include('../HeaderNav.php');
 require_once("../SelectUser.php");
 $nameErr = $pwderr = $invalidMesg = "";
 
-// This could be a solution for you ask. what about line no 57?
-// is the same logic. Still need both? if you want to show the message later... yes
-// this is a bit "tricky" for a redirect
-// because I don't like making redirects in browsers
-// you can use a header redirect too... but I don't like because could give you problems with caches
 if (isset($_POST['submit'])) {
 
     if ($_POST["usrname"]=="") {
@@ -23,26 +18,15 @@ if (isset($_POST['submit'])) {
         $array_user = verifyUsers(); //calling this function from SelectUser.php. The function returns an array
         if ($array_user != null) {
 
-            //print_r($array_user);
-            //echo "Test ".$array_user[0]["Role"];
+      
             if ($array_user[0]['Role']=="student")
             {
                 session_start();
-                $_SESSION['name'] = $_POST['usrname'];
-                $_SESSION["login_time_stamp"] = time(); 
+                $_SESSION['name'] = $array_user[0]['firstName'];
+                //$_SESSION["login_time_stamp"] = time(); 
                 $_SESSION['stdID'] = $array_user[0]['userId'];
-                //include('OtherPage.php');// why dont we use this in line 70? Because in line 70 you want to show a text
-                                            // not include contents of a diferent page. OK ok. 
-
-                // You can make a redirect too:
-                // Absolute URI:
-                // DOC: https://www.php.net/manual/es/function.header.php
-                $host  = $_SERVER['HTTP_HOST'];
-                $uri   = rtrim(dirname($_SERVER['PHP_SELF'], 2), '/\\');
-                $extra = 'User/UserIndex.php';
-                header("Location: http://$host$uri/$extra"); //i created a php file with the name OtherPage
-                // I don't like this way, because this redirection happens in the browser
-                // I prefer control things in the server
+               
+                header("Location: UserIndex.php"); 
                 exit();
             }
 
@@ -50,8 +34,6 @@ if (isset($_POST['submit'])) {
             {
                 $invalidMesg = "This page is for student login";
             }
-
-
             
         }
         else{

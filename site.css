@@ -79,3 +79,8 @@ body {
 .container {
   min-height: 100%;
 }
+
+.labelFont {
+  font-size: 18px;
+  font-weight: bold;
+}

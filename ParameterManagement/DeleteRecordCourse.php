@@ -1,5 +1,4 @@
 <?php
-    echo "Deleting...";
 
     $test=false;
     $courseCode = $_GET["code"];

@@ -1,38 +1,26 @@
 <?php 
-    include("../Nav/Admin/loggedHeaderAdmin.php");
-    require_once("CreateModuleInsertSQL.php");
-    include("../Session/session.php");
 
-    $path = "../Admin/LoginAdmin.php"; //this path is to pass to checkSession function from session.php 
-     
-      session_start(); //must start a session in order to use session in this page.
-      if (!isset($_SESSION['name'])){
-          session_unset();
-          session_destroy();
-          header("Location:".$path);//return to the login page
-      }
-     
-    $user = $_SESSION['name'];
-    checkSession ($path); //calling the function from session.php
+    include("../HeaderNav.php"); 
+    require_once("CreateModuleInsertSQL.php");
 
 
         
-        if (isset($_POST['submit'])) 
-        { 
-            print_r($_POST['year']);
-            $moduleCreated = insertModule();
-            echo "result ".$moduleCreated;
-            $host  = $_SERVER['HTTP_HOST'];
-            $uri   = rtrim(dirname($_SERVER['PHP_SELF'], 2), '/\\');
-            $extra = '/Admin/SuccessCreateModule.php';
-            header("Location: http://$host$uri/$extra");   
-            //header("Location: SuccessCreateModule.php");  //the simplest way
-            exit();
-        }
+    if (isset($_POST['submit'])) 
+    { 
+        print_r($_POST['year']);
+        $moduleCreated = insertModule();
+        // echo "result ".$moduleCreated;
+        // $host  = $_SERVER['HTTP_HOST'];
+        // $uri   = rtrim(dirname($_SERVER['PHP_SELF'], 2), '/\\');
+        // $extra = '/Admin/SuccessCreateModule.php';
+        // header("Location: http://$host$uri/$extra");   
+        header("Location: SuccessCreateModule.php");  //the simplest way
+        //exit();
+    }
  
 
 ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 <script>
     /*
     $(document).ready(function(){
@@ -43,7 +31,7 @@
     */
    
     function toggle (source){
-    var checkBoxes = document.querySelectorAll("input[name^='year[']");
+    var checkBoxes = document.querySelectorAll("input[name^='year[]']");
        
         for(var i=0; i<checkBoxes.length; i++) 
         {
@@ -116,12 +104,12 @@
                     <div class="form-group col-7">
                         <label class="control-label font-weight-bold">Course : </label>
                         <select type = "text" name="course[]" class="form-control" placeholder="Enter module name" multiple="multiple" size = 4>
-                            <?php 
-                            for ($i=0; $i<count($course_array); $i++):?>
-                            <option value=<?php echo '"'.$course_array[$i]['Course'].'"'?>><?php echo $course_array[$i]['Course'];?></option>
-                            <?php endfor; ?>
+                            <option value="Software Engineering">Software Engineering</option>
+                            <option value="Software Engineering">Computer Science</option>
+                            <option value="Software Engineering">Forensics</option>
+                            <option value="Software Engineering">Networking</option>
+                            <option value="Software Engineering">Artificial Intelligence</option>
                         </select>
-                        <span class="text-danger"></span>
                     </div>
 
                     <div class="form-group col-7">
@@ -134,8 +122,6 @@
                                <input type="checkbox" name="year[]" value="<?php echo ($i+1);?>" class="form-check-inline" /><?php echo $i+1;?><br />
                                <?php endfor; ?>
                             </div>
-                           
-                        <span class="text-danger"></span>
                     </div>
 
                     <div class="form-group col-7">
@@ -144,8 +130,6 @@
                                 <input type="radio" name="status" value="Active" class="form-check-inline">Active
                                 <input type="radio" name="status" value="Close" class="form-check-inline" style="margin-left: 20px">Close
                             </div>
-                           
-                        <span class="text-danger"></span>
                     </div>
 
                     <div class="form-group col-7">

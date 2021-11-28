@@ -61,7 +61,6 @@ if (isset($_POST['submit'])) {
         <main role="main" class="pb-3">
         <h2>Admin Login Page</h2><br>
      
-
             <div class="row">
                 <div class="col-md-4">
                     <form method="post">

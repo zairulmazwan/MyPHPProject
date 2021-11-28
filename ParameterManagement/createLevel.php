@@ -49,7 +49,7 @@
                     <span class="text-danger"><?php echo $levelErr;?></span>
                 </div>
 
-                <div class="form-group col-10">
+                <div class="form-group col-5">
                     <label class="control-label">Level Description</label>
                     <input type="text" class="form-control" name="description"/>
                     <span class="text-danger"><?php echo $desErr;?></span>

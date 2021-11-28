@@ -10,7 +10,7 @@
         // because we are using _POST vars directly from the form, a bad user could inject code here
         // I explain this to you once
         // we'd need to "work" with this vars before using it in a query, but for a first approach to PHP is enough
-        $stmt = $db->prepare('SELECT * FROM User WHERE Username=:usrname AND Password=:password');
+        $stmt = $db->prepare('SELECT * FROM User WHERE UserName=:usrname AND Password=:password AND Status="active"');
         $stmt->bindParam(':usrname', $_POST['usrname'], SQLITE3_TEXT);
         $stmt->bindParam(':password', $_POST['password'], SQLITE3_TEXT); //what is SQLITE3_TEXT???
 
@@ -28,7 +28,7 @@
         // NO, this STOPS all and show what $result has
         // NO, result is: SQLiteResult object() 1
         // and I don't know why result object is empty
-       
+        $rows_array = [];
         while ($row=$result->fetchArray())
         {
             $rows_array[]=$row;

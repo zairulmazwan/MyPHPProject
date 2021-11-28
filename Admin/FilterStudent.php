@@ -17,7 +17,7 @@ function filterStudent () {
     }
     else
     {
-        if ($_POST['filterLevel']!="All")
+        if ($_POST['filterLevel']!="All")//3,4,5,6,7
         {
             $stmt = $db->prepare('SELECT * FROM Student WHERE StdLevel=:level');
             $stmt->bindParam(':level', $_POST['filterLevel'], SQLITE3_TEXT);
@@ -31,7 +31,7 @@ function filterStudent () {
             }
             return $rows_array;
         }
-        else
+        else //all
         {
             //print_r($_POST['filterLevel']);
             $rows = $db->query('SELECT * FROM Student');

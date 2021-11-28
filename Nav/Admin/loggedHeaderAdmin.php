@@ -40,7 +40,7 @@
 								<a class="nav-link text-dark" href="/MyPHPProject/Admin/logout.php?user=admin">Logout</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-dark" style="padding-left: 65px;" id="clock"><?php //$date = date("d F Y"); echo $date; ?></a>
+								<a class="nav-link text-dark" style="padding-left: 50px;" id="clock"><?php //$date = date("d F Y"); echo $date; ?></a>
 							</li>
 						</ul>
 					</div>
