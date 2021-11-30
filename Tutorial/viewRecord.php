@@ -45,11 +45,11 @@ require("../HeaderNav.php");
                         </td>
                     </tr>
                     <?php endfor; ?>
-
-
-
                 </table>
             </div>
+        </div>
+        <div>
+            <a href="userPdf.php" target="_blank">Generate PDF</a>
         </div>
 		</main>
 	</div>

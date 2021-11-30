@@ -8,10 +8,10 @@ class PDF extends FPDF {
     {
         $this->SetFont('Arial','B',12);
         // Header
-        foreach($header as $col)
-            
+        foreach($header as $col){
             $this->Cell(35,7,$col,1);
-        $this->Ln();
+        }
+        $this->Ln(); //new line after print the header
 
         $this->SetFont('Arial','',12);
         // Data
@@ -68,3 +68,4 @@ class PDF extends FPDF {
     $pdf->BasicTable($header,$res);
     $pdf->Output();
 
+//reference : http://www.fpdf.org/
